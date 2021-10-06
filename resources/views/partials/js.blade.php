@@ -38,7 +38,7 @@
                     bodyRows += `<td><a class="btn btn-success btn-sm" href="animeList/show/`+id+`">詳細/修改</a></td>`;
                     bodyRows += `<td>
                                     <form method="POST" id="del`+id+`" action="animeList/delete/`+id+`" 
-                                    onsubmit="return confirm('確認要刪除動畫「{{ $list->name }}」嗎？')">
+                                    onsubmit="return confirm('確認要刪除動畫「` + response[i]["name"] + `」嗎？')">
                                         <input class="btn btn-danger btn-sm" type="submit" value="刪除" />
                                         @method('delete')
                                         @csrf
