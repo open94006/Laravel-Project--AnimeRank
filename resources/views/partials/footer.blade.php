@@ -20,7 +20,6 @@
             <div class="col-md-3 col-md-push-1">
                 <h4>個人資訊</h4>
                 <ul class="fh5co-footer-links">
-                    <li>Line ID：open94006</li>
                     <li>手機：0917-243-126</li>
                     <li>信箱：open94006880103@gmail.com</li>
                 </ul>
