@@ -15,7 +15,7 @@ class jidu extends Model
 
     public static function getYear()
     {
-        $list = DB::select('Select DISTINCT YEAR(date) as year FROM `jidu` ORDER by date desc;');
+        $list = DB::table('jidu')->selectRaw('YEAR(date) as year')->groupBy('year')->orderBy('year', 'desc')->get();
         return $list;
     }
 }
