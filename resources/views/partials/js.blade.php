@@ -1,23 +1,26 @@
 <!-- jQuery -->
-<script src={{  URL::asset("js/jquery.min.js") }}></script>
+<script src={{ URL::asset("js/jquery.min.js") }}></script>
 <!-- jQuery Easing -->
-<script src={{  URL::asset("js/jquery.easing.1.3.js") }}></script>
+<script src={{ URL::asset("js/jquery.easing.1.3.js") }}></script>
 <!-- Bootstrap -->
-<script src={{  URL::asset("js/bootstrap.min.js") }}></script>
+<script src={{ URL::asset("js/bootstrap.min.js") }}></script>
 <!-- Waypoints -->
-<script src={{  URL::asset("js/jquery.waypoints.min.js") }}></script>
+<script src={{ URL::asset("js/jquery.waypoints.min.js") }}></script>
 <!-- Flexslider -->
-<script src={{  URL::asset("js/jquery.flexslider-min.js") }}></script>
+<script src={{ URL::asset("js/jquery.flexslider-min.js") }}></script>
 <!-- Sticky Kit -->
-<script src={{  URL::asset("js/sticky-kit.min.js") }}></script>
+<script src={{ URL::asset("js/sticky-kit.min.js") }}></script>
 <!-- Main -->
-<script src={{  URL::asset("js/main.js") }}></script>
+<script src={{ URL::asset("js/main.js") }}></script>
 
 <script>
     // 收到季度select的變化，在tbody顯示該季度的動畫
     function getJidulist()
     {
         $.ajax({
+            beforeSend: function () {
+             $('#loading').css("display", "");
+            },
             url: `animeList/jidu/` + $("#jidu").val(),
             method: 'get',
             success: function(response)
@@ -49,6 +52,10 @@
                     bodyRows = '';
                 }
             },
+            complete: function(){
+              // $('#loading').css("display", "none"); 
+              setTimeout(function () { $('#loading').css("display", "none"); }, 1000);
+            },
             error: function()
             {
                 alert('《 AJAX出現錯誤 》');
@@ -77,6 +84,9 @@
         $.ajax({
             url: `rank/` + $("#year").val(),
             method: 'get',
+            beforeSend: function () {
+             $('#loading').css("display", "");
+            },
             success: function(response)
             {
                 $("#body_A").html('');
@@ -119,6 +129,10 @@
                     }
                     bodyRows = '';
                 }
+            },
+            complete: function(){
+              // $('#loading').css("display", "none"); 
+              setTimeout(function () { $('#loading').css("display", "none"); }, 1000);
             },
             error: function()
             {

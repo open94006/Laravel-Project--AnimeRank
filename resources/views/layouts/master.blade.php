@@ -10,7 +10,9 @@
 
 <body>
     <div class="fh5co-loader"></div>
-
+    <div class="loadingdiv" id="loading" style="display:none">
+        <img src={{ URL::asset("images/loading.jpg") }} />
+    </div>
     <div id="page">
         @include('partials.nav')
         <div class="container">
