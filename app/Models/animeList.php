@@ -67,7 +67,7 @@ class animeList extends Model
         $date = jidu::where('fullname', $jidu)->firstorfail();
         $start = date("Y-m-d", strtotime("$date->date-15 day"));
         $end = date("Y-m-d", strtotime("$start+3 month"));
-        $list = animeList::whereBetween('aired', [$start, $end])->orderBy('aired', 'desc')->get();
+        $list = animeList::select('id', 'name', 'aired', 'studios', 'url')->whereBetween('aired', [$start, $end])->orderBy('aired', 'desc')->get();
         return $list;
     }
 

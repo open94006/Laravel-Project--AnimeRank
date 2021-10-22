@@ -20,6 +20,7 @@
         <td width="30%" align="left">
             <a>選擇季度：</a>
             <select id="jidu" onchange="getJidulist()">
+                <option>===請選擇季度===</option>
                 @foreach ($jidu as $jidu_list)
                 <option>{{ $jidu_list->fullname }}</option>
                 @endforeach
@@ -38,29 +39,11 @@
                     <th scope="col" width="22%">動畫名稱</th>
                     <th scope="col" width="7%" class="rwd">開播日期</th>
                     <th scope="col" width="15%" class="rwd">動畫製作</th>
-                    <th scope="col" colspan=2 width="15%">動作</th>
+                    <th scope="col" colspan=3 width="15%">動作</th>
                 </tr>
             </thead>
             {{-- 在tbody使用AJAX生成該季度動畫 --}}
             <tbody id="animeList">
-                @foreach ($animeList as $list)
-                <tr>
-                    <td>{{ $list->name }}</td>
-                    <td class="rwd">{{ $list->aired }}</td>
-                    <td class="rwd">{{ $list->studios }}</td>
-                    <td><a class="btn btn-success btn-sm" href="{{ route('animeList.show', ['id' => $list->id]) }}"
-                            target="_blank">詳細/修改</a>
-                    </td>
-                    <td>
-                        <form method="POST" action="{{ route('animeList.destroy', ['id' => $list->id]) }}"
-                            onsubmit="return confirm('確認要刪除動畫「{{ $list->name }}」嗎？')">
-                            <input class="btn btn-danger btn-sm" type="submit" value="刪除" />
-                            @method('delete')
-                            @csrf
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
             </tbody>
         </table>
     </div>

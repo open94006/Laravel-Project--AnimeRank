@@ -5,7 +5,7 @@
     <h2>排行榜</h2>
     <a>選擇年度：</a>
     <select id="year" onchange="animeYearList()">
-        <option>----------</option>
+        <option>==請選擇年度==</option>
         @foreach ($yearlist as $item)
         @if ($item->year != 1970)
         <option>{{ $item->year }}年</option>

@@ -17,50 +17,47 @@
     // 收到季度select的變化，在tbody顯示該季度的動畫
     function getJidulist()
     {
-        $.ajax({
-            url: `animeList/jidu/` + $("#jidu").val(),
-            method: 'get',
-            beforeSend: function () {
-             $('#loading').css("display", "");
-            },
-            success: function(response)
-            {
-                $("#animeList").html('');
-                var bodyRows = '';
-                var jsonHead = ['name', 'aired', 'studios'];
-                for (var i=0; i < response.length; i++){
-                    bodyRows += '<tr>';
-                    for (a in jsonHead){
-                        if(a == 0){
-                            bodyRows += '<td>' + response[i][jsonHead[a]] + '</td>';
-                        }else{
-                            bodyRows += '<td class="rwd">' + response[i][jsonHead[a]] + '</td>';
-                        }
+        if($("#jidu").val() != "===請選擇季度==="){
+            $.ajax({
+                url: `animeList/jidu/` + $("#jidu").val(),
+                method: 'get',
+                beforeSend: function () {
+                $('#loading').css("display", "");
+                },
+                success: function(response)
+                {
+                    $("#animeList").html('');
+                    var bodyRows = '';
+                    for (var i=0; i < response.length; i++){
+                        bodyRows += '<tr>';
+                        bodyRows += '<td><a href="animeList/show/' + response[i]["id"] + '" target="_blank">' + response[i]['name'] + '</a></td>';
+                        bodyRows += '<td class="rwd">' + response[i]['aired'] + '</td>';
+                        bodyRows += '<td class="rwd">' + response[i]['studios'] + '</td>';
+                        bodyRows += `<td><a class="btn btn-warning btn-sm" href="`+response[i]['url']+`" target="_blank">線上看</a></td>`;
+                        bodyRows += `<td class="rwd"><a class="btn btn-success btn-sm" href="animeList/show/`+response[i]["id"]+`" target="_blank">詳細/修改</a></td>`;
+                        bodyRows += `<td class="rwd">
+                                        <form method="POST" id="del`+response[i]["id"]+`" action="animeList/delete/`+response[i]["id"]+`" 
+                                        onsubmit="return confirm('確認要刪除動畫「` + response[i]["name"] + `」嗎？')">
+                                            <input class="btn btn-danger btn-sm" type="submit" value="刪除" />
+                                            @method('delete')
+                                            @csrf
+                                        </form>
+                                    </td>`;
+                        bodyRows += '</tr>';
+                        $("#animeList").append(bodyRows);
+                        bodyRows = '';
                     }
-                    var id = response[i]["id"];
-                    bodyRows += `<td><a class="btn btn-success btn-sm" href="animeList/show/`+id+`" target="_blank">詳細/修改</a></td>`;
-                    bodyRows += `<td>
-                                    <form method="POST" id="del`+id+`" action="animeList/delete/`+id+`" 
-                                    onsubmit="return confirm('確認要刪除動畫「` + response[i]["name"] + `」嗎？')">
-                                        <input class="btn btn-danger btn-sm" type="submit" value="刪除" />
-                                        @method('delete')
-                                        @csrf
-                                    </form>
-                                </td>`;
-                    bodyRows += '</tr>';
-                    $("#animeList").append(bodyRows);
-                    bodyRows = '';
+                },
+                complete: function(){
+                // $('#loading').css("display", "none"); 
+                setTimeout(function () { $('#loading').css("display", "none"); }, 500);
+                },
+                error: function()
+                {
+                    alert('《 AJAX出現錯誤 》');
                 }
-            },
-            complete: function(){
-              // $('#loading').css("display", "none"); 
-              setTimeout(function () { $('#loading').css("display", "none"); }, 1000);
-            },
-            error: function()
-            {
-                alert('《 AJAX出現錯誤 》');
-            }
-        })
+            })
+        }
     }
 
     function enable_disable() 
@@ -81,64 +78,66 @@
 
     function animeYearList()
     {
-        $.ajax({
-            url: `rank/` + $("#year").val(),
-            method: 'get',
-            beforeSend: function () {
-             $('#loading').css("display", "");
-            },
-            success: function(response)
-            {
-                $("#body_A").html('');
-                $("#body_B").html('');
-                $("#body_C").html('');
-                $("#body_D").html('');
-                var bodyRows = '';
-                var jsonHead = ['id','name','aired','point'];
-                for (var i=0; i < response.length; i++){
-                    var m = response[i][jsonHead[2]];
-                    bodyRows += '<tr><td id="rank">';
-                    bodyRows += `<a href="animeList/show/` + response[i][jsonHead[0]] + `" target="_blank">`;
-                    bodyRows += response[i][jsonHead[1]] + '</a></td>';
+        if($("#year").val() != "==請選擇年度=="){
+            $.ajax({
+                url: `rank/` + $("#year").val(),
+                method: 'get',
+                beforeSend: function () {
+                $('#loading').css("display", "");
+                },
+                success: function(response)
+                {
+                    $("#body_A").html('');
+                    $("#body_B").html('');
+                    $("#body_C").html('');
+                    $("#body_D").html('');
+                    var bodyRows = '';
+                    var jsonHead = ['id','name','aired','point'];
+                    for (var i=0; i < response.length; i++){
+                        var m = response[i][jsonHead[2]];
+                        bodyRows += '<tr><td id="rank">';
+                        bodyRows += `<a href="animeList/show/` + response[i][jsonHead[0]] + `" target="_blank">`;
+                        bodyRows += response[i][jsonHead[1]] + '</a></td>';
 
-                    if(response[i][jsonHead[3]] >= 50){
-                        bodyRows += '<td id="point_a">'+ response[i][jsonHead[3]] +'</td></tr>';
-                    }else if(response[i][jsonHead[3]] >= 40){
-                        bodyRows += '<td id="point_b">'+ response[i][jsonHead[3]] +'</td></tr>';
-                    }else if(response[i][jsonHead[3]] >= 30){
-                        bodyRows += '<td id="point_c">'+ response[i][jsonHead[3]] +'</td></tr>';
-                    }else if(response[i][jsonHead[3]] != 0){
-                        bodyRows += '<td id="point_d">'+ response[i][jsonHead[3]] +'</td></tr>';
-                    }else {
-                        bodyRows += '<td id="point_e">—</td></tr>';
-                    }
+                        if(response[i][jsonHead[3]] >= 50){
+                            bodyRows += '<td id="point_a">'+ response[i][jsonHead[3]] +'</td></tr>';
+                        }else if(response[i][jsonHead[3]] >= 40){
+                            bodyRows += '<td id="point_b">'+ response[i][jsonHead[3]] +'</td></tr>';
+                        }else if(response[i][jsonHead[3]] >= 30){
+                            bodyRows += '<td id="point_c">'+ response[i][jsonHead[3]] +'</td></tr>';
+                        }else if(response[i][jsonHead[3]] != 0){
+                            bodyRows += '<td id="point_d">'+ response[i][jsonHead[3]] +'</td></tr>';
+                        }else {
+                            bodyRows += '<td id="point_e">—</td></tr>';
+                        }
 
-                    var aired = new Date(m);
-                    if(aired.getDate() > 15){
-                        aired.setMonth(aired.getMonth()+1);
+                        var aired = new Date(m);
+                        if(aired.getDate() > 15){
+                            aired.setMonth(aired.getMonth()+1);
+                        }
+                        
+                        if(aired.getMonth() < 3){
+                            $("#body_A").append(bodyRows);
+                        }else if(aired.getMonth() < 6){
+                            $("#body_B").append(bodyRows);
+                        }else if(aired.getMonth() < 9){
+                            $("#body_C").append(bodyRows);
+                        }else{
+                            $("#body_D").append(bodyRows);
+                        }
+                        bodyRows = '';
                     }
-                    
-                    if(aired.getMonth() < 3){
-                        $("#body_A").append(bodyRows);
-                    }else if(aired.getMonth() < 6){
-                        $("#body_B").append(bodyRows);
-                    }else if(aired.getMonth() < 9){
-                        $("#body_C").append(bodyRows);
-                    }else{
-                        $("#body_D").append(bodyRows);
-                    }
-                    bodyRows = '';
+                },
+                complete: function(){
+                // $('#loading').css("display", "none"); 
+                setTimeout(function () { $('#loading').css("display", "none"); }, 500);
+                },
+                error: function()
+                {
+                    alert('《 AJAX出現錯誤 》');
+                    console.log(response);
                 }
-            },
-            complete: function(){
-              // $('#loading').css("display", "none"); 
-              setTimeout(function () { $('#loading').css("display", "none"); }, 500);
-            },
-            error: function()
-            {
-                alert('《 AJAX出現錯誤 》');
-                console.log(response);
-            }
-        })
+            })
+        }
     }
 </script>
