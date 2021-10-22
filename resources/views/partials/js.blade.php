@@ -18,11 +18,11 @@
     function getJidulist()
     {
         $.ajax({
+            url: `animeList/jidu/` + $("#jidu").val(),
+            method: 'get',
             beforeSend: function () {
              $('#loading').css("display", "");
             },
-            url: `animeList/jidu/` + $("#jidu").val(),
-            method: 'get',
             success: function(response)
             {
                 $("#animeList").html('');
@@ -54,7 +54,7 @@
             },
             complete: function(){
               // $('#loading').css("display", "none"); 
-              setTimeout(function () { $('#loading').css("display", "none"); }, 500);
+              setTimeout(function () { $('#loading').css("display", "none"); }, 1000);
             },
             error: function()
             {
@@ -132,7 +132,7 @@
             },
             complete: function(){
               // $('#loading').css("display", "none"); 
-              setTimeout(function () { $('#loading').css("display", "none"); }, 1000);
+              setTimeout(function () { $('#loading').css("display", "none"); }, 500);
             },
             error: function()
             {
