@@ -48,8 +48,8 @@
                     <td>{{ $list->name }}</td>
                     <td class="rwd">{{ $list->aired }}</td>
                     <td class="rwd">{{ $list->studios }}</td>
-                    <td><a class="btn btn-success btn-sm"
-                            href="{{ route('animeList.show', ['id' => $list->id]) }}">詳細/修改</a>
+                    <td><a class="btn btn-success btn-sm" href="{{ route('animeList.show', ['id' => $list->id]) }}"
+                            target="_blank">詳細/修改</a>
                     </td>
                     <td>
                         <form method="POST" action="{{ route('animeList.destroy', ['id' => $list->id]) }}"

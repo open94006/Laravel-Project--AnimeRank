@@ -38,7 +38,7 @@
                         }
                     }
                     var id = response[i]["id"];
-                    bodyRows += `<td><a class="btn btn-success btn-sm" href="animeList/show/`+id+`">詳細/修改</a></td>`;
+                    bodyRows += `<td><a class="btn btn-success btn-sm" href="animeList/show/`+id+`" target="_blank">詳細/修改</a></td>`;
                     bodyRows += `<td>
                                     <form method="POST" id="del`+id+`" action="animeList/delete/`+id+`" 
                                     onsubmit="return confirm('確認要刪除動畫「` + response[i]["name"] + `」嗎？')">
@@ -54,7 +54,7 @@
             },
             complete: function(){
               // $('#loading').css("display", "none"); 
-              setTimeout(function () { $('#loading').css("display", "none"); }, 1000);
+              setTimeout(function () { $('#loading').css("display", "none"); }, 500);
             },
             error: function()
             {
@@ -98,7 +98,7 @@
                 for (var i=0; i < response.length; i++){
                     var m = response[i][jsonHead[2]];
                     bodyRows += '<tr><td id="rank">';
-                    bodyRows += `<a href="animeList/show/` + response[i][jsonHead[0]] + `">`;
+                    bodyRows += `<a href="animeList/show/` + response[i][jsonHead[0]] + `" target="_blank">`;
                     bodyRows += response[i][jsonHead[1]] + '</a></td>';
 
                     if(response[i][jsonHead[3]] >= 50){
