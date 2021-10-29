@@ -1380,7 +1380,7 @@ div.tellus1 {
 }
 
 div.tellus2 {
-  width: 96%;
+  width: 95%;
   line-height:30px;
   float:left;
 }
@@ -1392,13 +1392,13 @@ div.tellus2 {
   }
 
   div.tellus1 {
-    width:15%;
+    width:13%;
     line-height:20px;
     float:left;
   }
 
   div.tellus2 {
-    width: 85%;
+    width: 86%;
     line-height:30px;
     float:left;
   }

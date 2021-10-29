@@ -20,7 +20,8 @@
             <div class="col-md-3 col-md-push-1">
                 <h4>聯絡信箱</h4>
                 <ul class="fh5co-footer-links">
-                    <li>open94006880103@gmail.com</li>
+                    <li>官方：animerankoffice@gmail.com</li>
+                    <li>作者：open94006880103@gmail.com</li>
                 </ul>
             </div>
 
