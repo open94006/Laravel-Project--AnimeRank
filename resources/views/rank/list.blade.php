@@ -2,7 +2,7 @@
 @section('title', '排行榜')
 @section('container')
 <div id="fh5co-intro">
-    <h2>排行榜</h2>
+    <h2>排行榜</h2><br>
     <a>選擇年度：</a>
     <select id="year" onchange="animeYearList()">
         <option>==請選擇年度==</option>

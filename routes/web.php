@@ -42,7 +42,7 @@ Route::group(['prefix' => 'rank', 'middleware' => authadmin::class], function ()
 });
 
 Route::group(['prefix' => 'tellus'], function () {
+    #意見箱頁面
     Route::get('/', [TellusController::class, 'index'])->name('tellus.index');
     Route::post('/store', [TellusController::class, 'store'])->name('tellus.store');
-    Route::get('/send-mail', [TellusController::class, 'sendMail'])->name('tellus.mail');
 });

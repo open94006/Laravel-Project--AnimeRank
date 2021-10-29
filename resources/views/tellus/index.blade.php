@@ -16,7 +16,7 @@
         @endif
     </div>
     <br>
-    <form action="{{ route('tellus.store') }}" method="post">
+    <form action="{{ route('tellus.store') }}" method="post" onsubmit="return confirm('確認送出意見嗎？')">
         @csrf
         <div class="form-group">
             <label for="name">姓名</label>
@@ -30,10 +30,9 @@
             <label for="description">意見</label>
         </div>
         <div class="tellus2">
-            <textarea name="description" required></textarea>
+            <textarea name="description" value="{{ old('description') }}" required></textarea>
         </div>
         <div class="form-group">
-            <br>
             <input type="submit" value="送出意見">
             <input type="reset">
         </div>

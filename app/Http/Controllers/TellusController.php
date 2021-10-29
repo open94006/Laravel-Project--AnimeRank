@@ -25,14 +25,9 @@ class TellusController extends Controller
 
             Mail::to($request->input('email'))->send(new TellusMail($details));
 
-
-            return redirect()->route('tellus.index')->with('success', '系統提示：您的意見已送出！');
+            return redirect()->route('tellus.index')->with('success', '系統提示：您的意見已送出，並寄了備份信件到你的信箱！');
         } else {
             return redirect()->route('tellus.index')->with('fail', '系統提示：發生錯誤');
         }
-    }
-
-    public function sendMail(Request $request)
-    {
     }
 }

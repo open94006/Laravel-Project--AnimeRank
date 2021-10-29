@@ -74,6 +74,8 @@
         document.getElementById(id).select();
         document.execCommand("Copy");
         $("#url").prop('disabled', true);
+        window.getSelection().empty();
+        $('.alert').html('複製成功！').addClass('alert-success').show().delay(1500).fadeOut();
     }
 
     function animeYearList()

@@ -1404,5 +1404,13 @@ div.tellus2 {
   }
 }
 
+a.slogan {
+  font-size: 44px;
+}
 
-
+@media(max-width: 768px){
+  a.slogan {
+    line-height:30px;
+    font-size: 32px;
+  }
+}

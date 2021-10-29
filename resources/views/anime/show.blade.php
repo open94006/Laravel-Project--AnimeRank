@@ -2,7 +2,7 @@
 @section('title', '詳細資料')
 @section('container')
 <div id="fh5co-intro">
-    <h2>詳細/修改動畫</h2><br>
+    <h2>詳細/修改動畫</h2>
     <div id="result">
         @if(Session::get('success'))
         <div class="alert alert-success">
@@ -33,7 +33,8 @@
         {{-- 線上看網址 --}}
         <label>線上看url：</label>
         <input type="url" name="url" value="{{ $show->url }}" id="url" disabled required />
-        <input type="button" onclick="copyEvent('url')" value="複製"><br>
+        <button onclick="copyEvent('url')" type="button">複製</button>
+        <a class="alert" type="hidden"></a><br>
         {{-- 評分 --}}
         <label>評分：</label>
         <table>

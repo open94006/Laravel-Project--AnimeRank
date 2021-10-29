@@ -4,7 +4,7 @@
 <div id="fh5co-intro">
     <div class="row animate-box">
         <div class="col-md-8 col-md-offset-2 col-md-pull-2">
-            <h2>對你喜歡的動畫排行吧！</h2>
+            <a class="slogan">對你喜歡的動畫排行吧！</a>
         </div>
     </div>
 </div>
