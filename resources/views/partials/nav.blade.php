@@ -13,8 +13,8 @@
                         @if (session()->has('LoggedUserId'))
                         <li class="has-dropdown"><a>{{ session()->get('LoggedUserName') }}，你好！</a>
                             <ul class="dropdown">
-                                <li><a href="">個人資料</a></li>
-                                <li><a href="{{ route('auth.logout') }}">登出</a></li>
+                                {{-- <li><a href="">個人資料</a></li> --}}
+                                <li><a href="{{ route('auth.logout') }}">登出帳號</a></li>
                             </ul>
                         </li>
                         @else

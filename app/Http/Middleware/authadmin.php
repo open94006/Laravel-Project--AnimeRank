@@ -16,9 +16,10 @@ class authadmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session()->has('LoggedUserId')) {
+        if ($request->session()->has('LoggedUserId')) {
+            return $next($request);
+        } else {
             return redirect('/auth/login');
         }
-        return $next($request);
     }
 }

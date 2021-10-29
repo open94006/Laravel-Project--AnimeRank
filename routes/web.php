@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Middleware\authadmin;
 use App\Http\Controllers\animeListController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\RankController;
 use App\Http\Controllers\TellusController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\authadmin;
 
 Route::get('/', function () {
     return view('welcome');
