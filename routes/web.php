@@ -44,4 +44,5 @@ Route::group(['prefix' => 'rank', 'middleware' => authadmin::class], function ()
 Route::group(['prefix' => 'tellus'], function () {
     Route::get('/', [TellusController::class, 'index'])->name('tellus.index');
     Route::post('/store', [TellusController::class, 'store'])->name('tellus.store');
+    Route::get('/send-mail', [TellusController::class, 'sendMail'])->name('tellus.mail');
 });
