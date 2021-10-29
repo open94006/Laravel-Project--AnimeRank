@@ -3,6 +3,7 @@
 use App\Http\Controllers\animeListController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\RankController;
+use App\Http\Controllers\TellusController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\authadmin;
 
@@ -38,4 +39,9 @@ Route::group(['prefix' => 'rank', 'middleware' => authadmin::class], function ()
 
     # 取得年份api
     Route::get('/{year}', [RankController::class, 'getanimeYear'])->name('rank.year');
+});
+
+Route::group(['prefix' => 'tellus'], function () {
+    Route::get('/', [TellusController::class, 'index'])->name('tellus.index');
+    Route::post('/store', [TellusController::class, 'store'])->name('tellus.store');
 });

@@ -9,6 +9,7 @@
                     <ul>
                         <li><a href="{{ route('rank.index') }}">排行榜</a></li>
                         <li><a href="{{ route('animeList.index') }}">動畫清單</a></li>
+                        <li><a href="{{ route('tellus.index') }}">意見箱</a></li>
                         @if (session()->has('LoggedUserId'))
                         <li class="has-dropdown"><a>{{ session()->get('LoggedUserName') }}，你好！</a>
                             <ul class="dropdown">

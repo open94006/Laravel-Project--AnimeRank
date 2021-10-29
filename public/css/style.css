@@ -1367,3 +1367,42 @@ div.loadingdiv img {
   margin: 0 auto;
   margin-top: 40vh;
 }
+
+textarea {
+  width: 400px;
+  height: 200px;
+}
+
+div.tellus1 {
+  width:4%;
+  line-height:20px;
+  float:left;
+}
+
+div.tellus2 {
+  width: 96%;
+  line-height:30px;
+  float:left;
+}
+
+@media(max-width: 768px){
+  textarea {
+    width: 220px;
+    height: 200px;
+  }
+
+  div.tellus1 {
+    width:15%;
+    line-height:20px;
+    float:left;
+  }
+
+  div.tellus2 {
+    width: 85%;
+    line-height:30px;
+    float:left;
+  }
+}
+
+
+
