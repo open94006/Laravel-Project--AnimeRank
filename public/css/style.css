@@ -368,7 +368,7 @@ h1, h2, h3, h4, h5, h6, figure {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
-  min-height: 800px;
+  max-height: 800px;
   position: relative;
 }
 @media screen and (max-width: 768px) {
@@ -425,14 +425,15 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  padding: 0 2em 3em 0;
+  padding: 5em 7em 0 0;
 }
 @media screen and (max-width: 768px) {
   #fh5co-hero .flexslider .slider-text > .slider-text-inner {
     text-align: left;
     margin-left: 10px;
+    padding: 2em 0 0 0;
   }
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner h1, #fh5co-hero .flexslider .slider-text > .slider-text-inner h2 {
@@ -448,8 +449,8 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
   display: inline;
   display: inline;
-  background-color: #F95959;
-  box-shadow: 0.2em 0 0 #F95959, -0.2em 0 0 #F95959;
+  background-color: #ad3e3e;
+  box-shadow: 0.2em 0 0 #d37171, -0.2em 0 0 #d37171;
   padding: 0.1em 0em;
   box-decoration-break: clone;
 }

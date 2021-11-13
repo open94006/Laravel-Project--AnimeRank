@@ -11,7 +11,7 @@
 <body>
     <div class="fh5co-loader"></div>
     <div class="loadingdiv" id="loading" style="display:none">
-        <img src={{ URL::asset("images/loading.jpg") }} />
+        <img src={{ URL::asset("images/loading.gif") }} width="200" />
     </div>
     <div id="page">
         @include('partials.nav')
