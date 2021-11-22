@@ -12,6 +12,11 @@
                 {{Session::get('fail')}}
             </div>
             @endif
+            @if(Session::get('login'))
+            <div class="alert alert-info">
+                {{Session::get('login')}}
+            </div>
+            @endif
         </div>
         <div class="form-group">
             <label for="email">信箱</label>
@@ -28,7 +33,7 @@
             <input type="reset">
         </div>
         <div class="form-group">
-            <a href={{ route('auth.register') }}>註冊一個新帳號</a>
+            <a href={{ route('auth.register') }}>沒有帳號嗎？點此註冊一個新帳號</a>
         </div>
     </form>
 </div>

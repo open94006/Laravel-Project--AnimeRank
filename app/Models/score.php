@@ -33,6 +33,7 @@ class score extends Model
         $scoreList->produce = $request->input('produce');
         $scoreList->will = $request->input('will');
         $scoreList->durable = $request->input('durable');
+        $scoreList->last_update = date("Y-m-d H:i:s");
         $scoreList->save();
     }
 

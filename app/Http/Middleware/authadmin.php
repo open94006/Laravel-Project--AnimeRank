@@ -16,10 +16,10 @@ class authadmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('LoggedUserId')) {
+        if ($request->session()->has('LoggedUserId') or $request->ajax()) {
             return $next($request);
         } else {
-            return redirect('/auth/login');
+            return redirect('/auth/login')->with('login', '系統提示：請登入會員！');
         }
     }
 }
