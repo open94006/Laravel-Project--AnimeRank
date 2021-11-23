@@ -75,4 +75,9 @@ class animeListController extends Controller
             return redirect()->route('animeList.index')->with('fail', '系統提示：發生錯誤');
         }
     }
+
+    public function AnimeSearch($word = null)
+    {
+        return animeList::getanimeSearch($word);
+    }
 }

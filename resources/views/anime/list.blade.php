@@ -15,9 +15,8 @@
         </div>
         @endif
     </div>
-    <table id="menu">
-        {{-- 選擇季度select --}}
-        <td width="30%" align="left">
+    <div style="overflow-x: auto;">
+        <div class="menu1">
             <a>選擇季度：</a>
             <select id="jidu" onchange="getJidulist()">
                 <option>===請選擇季度===</option>
@@ -25,13 +24,14 @@
                 <option>{{ $jidu_list->fullname }}</option>
                 @endforeach
             </select>
-        </td>
-        <td width="60%">
-        </td>
-        <td width="10%">
+        </div>
+        <div class="menu2">
+            <a>快速搜尋：</a><input type="text" id="search">
+        </div>
+        <div class="menu3">
             <a href="{{ route('animeList.create') }}" class="btn btn-info btn-sm">新增動畫</a>
-        </td>
-    </table>
+        </div>
+    </div>
     <div style="overflow-x: auto;">
         <table class="table">
             <thead class="thead-light">
@@ -42,7 +42,6 @@
                     <th scope="col" colspan=3 width="15%">動作</th>
                 </tr>
             </thead>
-            {{-- 在tbody使用AJAX生成該季度動畫 --}}
             <tbody id="animeList">
             </tbody>
         </table>

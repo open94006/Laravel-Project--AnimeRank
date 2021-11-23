@@ -14,7 +14,7 @@
 <script src={{ URL::asset("js/main.js") }}></script>
 
 <script>
-    // 收到季度select的變化，在tbody顯示該季度的動畫
+    // 收到select的變化，在tbody顯示該季度的動畫
     function getJidulist()
     {
         if($("#jidu").val() != "===請選擇季度==="){
@@ -49,17 +49,17 @@
                     }
                 },
                 complete: function(){
-                // $('#loading').css("display", "none"); 
                 setTimeout(function () { $('#loading').css("display", "none"); }, 500);
                 },
                 error: function()
                 {
-                    alert('《 AJAX出現錯誤 》');
+                    alert('系統提示：getJidulist出現錯誤');
                 }
             })
         }
     }
 
+    // 修改的改變與input的是否可輸入
     function enable_disable() 
     {
         $("input").prop('disabled', false);
@@ -68,6 +68,7 @@
         $("button").prop('hidden', true);
     }
 
+    // 複製通知
     function copyEvent(id)
     {
         $("#url").prop('disabled', false);
@@ -78,6 +79,7 @@
         $('.alert').html('複製成功！').addClass('alert-success').show().delay(1500).fadeOut();
     }
 
+    // 收到select的變化，在tbody顯示該年度的排行榜
     function animeYearList()
     {
         if($("#year").val() != "==請選擇年度=="){
@@ -131,15 +133,51 @@
                     }
                 },
                 complete: function(){
-                // $('#loading').css("display", "none"); 
                 setTimeout(function () { $('#loading').css("display", "none"); }, 500);
                 },
                 error: function()
                 {
-                    alert('《 AJAX出現錯誤 》');
-                    console.log(response);
+                    alert('系統提示：animeYearList出現錯誤');
                 }
             })
         }
+    }
+
+    // 搜尋的及時變化(fetch)
+    const searchInput = document.querySelector('#search');
+    searchInput.addEventListener('input', animeSearch);
+
+    function animeSearch()
+    {
+        fetch('./animeList/search/' + $("#search").val(), { method: 'get' })
+        .then((response) => {
+            return response.json();
+        })
+        .then((dataList) => {
+            data = dataList;
+            $("#animeList").html('');
+                var bodyRows = '';
+                for (var i=0; i < data.length; i++){
+                    bodyRows += '<tr>';
+                    bodyRows += '<td><a href="animeList/show/' + data[i]["id"] + '" target="_blank">' + data[i]['name'] + '</a></td>';
+                    bodyRows += '<td class="rwd">' + data[i]['aired'] + '</td>';
+                    bodyRows += '<td class="rwd">' + data[i]['studios'] + '</td>';
+                    bodyRows += `<td><a class="btn btn-warning btn-sm" href="`+data[i]['url']+`" target="_blank">線上看</a></td>`;
+                    bodyRows += `<td class="rwd"><a class="btn btn-success btn-sm" href="animeList/show/`+data[i]["id"]+`" target="_blank">詳細/修改</a></td>`;
+                    bodyRows += `<td class="rwd">
+                                    <form method="POST" id="del`+data[i]["id"]+`" action="animeList/delete/`+data[i]["id"]+`" 
+                                    onsubmit="return confirm('確認要刪除動畫「` + data[i]["name"] + `」嗎？')">
+                                        <input class="btn btn-danger btn-sm" type="submit" value="刪除" />
+                                        @method('delete')
+                                        @csrf
+                                    </form>
+                                </td>`;
+                    bodyRows += '</tr>';
+                    $("#animeList").append(bodyRows);
+                    bodyRows = '';
+                }
+        }).catch(function(err) {
+            alert('系統提示：animeSearch出現錯誤')
+        })
     }
 </script>

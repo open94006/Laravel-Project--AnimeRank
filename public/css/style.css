@@ -1252,17 +1252,6 @@ table {
   }
 }
 
-#menu { 
-  border-top: 1px solid #fff3f3;
-  border-left:none;
-  border-bottom:1px solid #fff3f3;
-}
-
-#menu td{
-  border:1px solid #fff3f3;
-  border-left:none;
-}
-
 th { 
   background-color: #d89c8c;
   padding:10px;
@@ -1413,5 +1402,46 @@ a.slogan {
   a.slogan {
     line-height:30px;
     font-size: 32px;
+  }
+}
+
+div.menu1{
+  width: 30%;
+  text-align:center;
+  float: left;
+}
+
+div.menu2{
+  width: 60%;
+  text-align:center;
+  float: left;
+}
+
+div.menu3{
+  width: 10%;
+  text-align:center;
+  float: right;
+}
+
+@media(max-width: 768px){
+  div.menu1{
+    width: 100%;
+    text-align:left;
+    float: left;
+    padding: 5px 1px;
+  }
+  
+  div.menu2{
+    width: 100%;
+    text-align:left;
+    float: left;
+    padding: 5px 1px;
+  }
+  
+  div.menu3{
+    width: 100%;
+    text-align:right;
+    float: left;
+    padding: 5px 1px;
   }
 }

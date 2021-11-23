@@ -4,7 +4,7 @@
 <aside id="fh5co-hero">
     <div class="flexslider">
         <ul class="slides">
-            <li style="background-image: url(images/Hunter.jpg);">
+            <li style="background-image: url(https://i.imgur.com/xSOpBRj.jpeg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url(images/jujutsu.jpg);">
+            <li style="background-image: url(https://i.imgur.com/zCQ7uPM.jpg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url(images/86.jpg);">
+            <li style="background-image: url(https://i.imgur.com/uSOpX4C.jpeg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url(images/Abyss.jpg);">
+            <li style="background-image: url(https://i.imgur.com/43HT00t.jpeg);">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">

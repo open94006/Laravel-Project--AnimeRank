@@ -80,4 +80,10 @@ class animeList extends Model
             ->get();
         return $list;
     }
+
+    public static function getanimeSearch($word)
+    {
+        $list = animeList::where('name', 'like', "%" . $word . "%")->orWhere('studios', 'like', "%" . $word . "%")->get();
+        return $list;
+    }
 }

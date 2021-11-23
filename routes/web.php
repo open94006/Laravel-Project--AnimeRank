@@ -20,8 +20,9 @@ Route::group(['prefix' => 'animeList', 'middleware' => authadmin::class], functi
     Route::put('/show/{id}', [animeListController::class, 'update'])->name('animeList.update');
     Route::delete('/delete/{id}', [animeListController::class, 'destroy'])->name('animeList.destroy');
 
-    # 取得動畫api
+    # api
     Route::get('/jidu/{jidu}', [animeListController::class, 'Animejidu'])->name('animeList.jidu');
+    Route::get('/search/{word?}', [animeListController::class, 'AnimeSearch'])->name('animeList.Search');
 });
 
 Route::group(['prefix' => 'auth'], function () {
