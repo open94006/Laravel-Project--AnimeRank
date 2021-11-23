@@ -17,7 +17,7 @@
     </div>
     <div style="overflow-x: auto;">
         <div class="menu1">
-            <a>選擇季度：</a>
+            <a>選擇季度&emsp;</a>
             <select id="jidu" onchange="getJidulist()">
                 <option>===請選擇季度===</option>
                 @foreach ($jidu as $jidu_list)
@@ -26,7 +26,7 @@
             </select>
         </div>
         <div class="menu2">
-            <a>快速搜尋：</a><input type="text" id="search">
+            <a>快速搜尋&emsp;</a><input type="text" id="search" placeholder="動畫名稱、製作公司" maxlength="25">
         </div>
         <div class="menu3">
             <a href="{{ route('animeList.create') }}" class="btn btn-info btn-sm">新增動畫</a>
@@ -38,7 +38,7 @@
                 <tr>
                     <th scope="col" width="22%">動畫名稱</th>
                     <th scope="col" width="7%" class="rwd">開播日期</th>
-                    <th scope="col" width="15%" class="rwd">動畫製作</th>
+                    <th scope="col" width="15%" class="rwd">製作公司</th>
                     <th scope="col" colspan=3 width="15%">動作</th>
                 </tr>
             </thead>

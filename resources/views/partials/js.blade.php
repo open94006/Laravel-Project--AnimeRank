@@ -144,11 +144,24 @@
     }
 
     // 搜尋的及時變化(fetch)
-    const searchInput = document.querySelector('#search');
-    searchInput.addEventListener('input', animeSearch);
+    let flag = true;
+    $("#search").on('compositionstart',function(){
+        flag = false;
+    });
+    $("#search").on('compositionend',function(){
+        flag = true;
+    });
+    $("#search").on('input',function(){
+        setTimeout(function(){
+            if(flag){
+            	animeSearch();
+            }
+        },0);
+    });
 
     function animeSearch()
     {
+        console.log($("#search").val())
         fetch('./animeList/search/' + $("#search").val(), { method: 'get' })
         .then((response) => {
             return response.json();
