@@ -56,7 +56,7 @@
                 <td><input type="number" min="0" max="10" name="durable" value="{{ $score->durable }}" disabled /></td>
             </tbody>
         </table>
-        <p>（上次更新分數 {{ $score->last_update }}）</p>
+        <p>（上次更新 {{ $score->last_update }}）</p>
         <input type="submit" value="確認送出" hidden>
     </form>
     <button onclick="enable_disable()">

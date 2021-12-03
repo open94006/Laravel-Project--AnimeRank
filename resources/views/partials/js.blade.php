@@ -161,7 +161,6 @@
 
     function animeSearch()
     {
-        console.log($("#search").val())
         fetch('./animeList/search/' + $("#search").val(), { method: 'get' })
         .then((response) => {
             return response.json();
