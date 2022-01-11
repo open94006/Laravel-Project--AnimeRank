@@ -10,7 +10,11 @@ class UserAuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        if (session()->has('LoggedUserId')) {
+            return redirect('/');
+        }else{
+            return view('auth.login');
+        }
     }
 
     public function register()
@@ -44,7 +48,8 @@ class UserAuthController extends Controller
     {
         $request->validate([
             'email' => 'required',
-            'password' =>  'required|min:5|max:15'
+            'password' =>  'required|min:5|max:15',
+            'url' => url()->previous()
         ]);
 
         $user = User::where('email', '=', $request->email)->first();
