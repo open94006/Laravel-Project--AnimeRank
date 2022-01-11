@@ -12,7 +12,7 @@
                     <li>■ <strong>人物</strong>：角色的刻劃與塑造、討喜程度</li>
                     <li>■ <strong>劇情</strong>：作品在事件變化的詮釋與敘事方式</li>
                     <li>■ <strong>製作</strong>：畫面人物場景、音樂、分鏡的呈現</li>
-                    <li>■ <strong>價值觀</strong>：對本人的思維上的影響力與其震撼</li>
+                    <li>■ <strong>價值觀</strong>：思維上的影響力與觀感</li>
                     <li>■ <strong>耐久度</strong>：動畫經過時間歷練後能帶來多少記憶點</li>
                 </ul>
             </div>
